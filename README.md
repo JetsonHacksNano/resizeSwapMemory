@@ -22,7 +22,7 @@ The size of the Zram for each CPU is calculated by the line:
 Basically it divides the amount of physical memory by the number of CPUS with a divisor, in this case 2 to get the 2GB total.
 Note that you can simply edit this equation using a text editor. You should probably make a backup first, just in case.
 <blockquote>
-sudo gedit /etc/systemd/nvzramconfig.h
+sudo gedit /etc/systemd/nvzramconfig.sh
 </blockquote>
 
 For example, you may remove the divisor to get a full 4GB.
