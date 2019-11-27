@@ -1,15 +1,13 @@
 # ResizeSwapfile
-Resize the Zram swapfile on the Jetson Nano
+Resize the size of swap memory on the Jetson Nano
 
-<h1>Work in Progress!</h1>
+Starting with L4T 32.2.1/JetPack 4.2.2, the Jetson Nano by default has 2GB of swap memory. The swap meory allows for "extra memory" when there is memory pressure on main (physical) memory by swapping portions of memory to disk. Because the Jetson Nano has a relatively small amount of memory (4GB) this can be very useful, especially when say compiling large projects.
 
-Starting with L4T 32.2.1/JetPack 4.2.2, the Jetson Nano by default has a 2GB swapfile. The swapfile allows for "extra memory" when there is memory pressure on main (physical) memory by swapping portions of memory to disk. Because the Jetson Nano has a relatively small amount of memory (4GB) this can be very useful, especially when say compiling large projects.
-
-The swapfile method in use is Zram. You can examine the swapfile information:
+The swapfile method in use is Zram. You can examine the swap memory information:
 <blockquote>
 $ zramctl</blockquote>
 
-You will notice that there are four entries (one for each CPU of the Jetson Nano) /dev/zram0 - /dev/zram3. Each entry has an allocated amount of swap file memory associated with it, by default 494.6M, for a total of around 2GB. This is half the size of the main memory. You will find this to be adequate for most tasks.
+You will notice that there are four entries (one for each CPU of the Jetson Nano) /dev/zram0 - /dev/zram3. Each entry has an allocated amount of swap memory associated with it, by default 494.6M, for a total of around 2GB. This is half the size of the main memory. You will find this to be adequate for most tasks.
 
 However, there are times ...
 
@@ -23,7 +21,7 @@ mem=$((("${totalmem}" / 2 / "${NRDEVICES}") * 1024))
 where totalmem is the total amount of memory, and NRDEVICES is the number of CPUs.
 
 Basically it divides the amount of physical memory by the number of CPUS with a divisor, in this case 2 to get the 2GB total.
-Note that you can simply edit this equation using a text editor. You should probably make a backup first, just in case.
+You can simply edit this equation using a text editor. You should probably make a backup of the file first, just in case. You will need sudo permissions to change the file.
 <blockquote>
 sudo gedit /etc/systemd/nvzramconfig.sh
 </blockquote>
@@ -53,9 +51,13 @@ You will need to reboot for the change to take effect.
 
 <h3>Notes</h3>
 <b>November 2019</b>
+
 Initial Release
+
+* v1.0
 * Jetson Nano
 * L4T 32.2.1/JetPack 4.2.2
+* L4T 32.2.3/JetPack 4.3
 
 
 
