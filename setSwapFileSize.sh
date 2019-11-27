@@ -48,7 +48,8 @@ while [ "$1" != "" ]; do
     esac
    shift
 done
-REQUESTED_BYTES=$(($MEGABYTES/4*1024))
+NRDEVICES=$(grep -c ^processor /proc/cpuinfo | sed 's/^0$/1/')
+REQUESTED_BYTES=$((( "$MEGABYTES" / "${NRDEVICES}" )*1024*1024))
 # The configuration file is here:
 CONFIG_FILE=/etc/systemd/nvzramconfig.sh
 
