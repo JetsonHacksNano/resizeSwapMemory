@@ -54,7 +54,7 @@ CONFIG_FILE=/etc/systemd/nvzramconfig.sh
 
 if [ -f $CONFIG_FILE ] ; then
   # we replace the memory request with the desired outcome
-  sudo sed '/^mem=/c\mem='"$REQUESTED_BYTES"'' $CONFIG_FILE
+  sudo sed -i '/^mem=/c\mem='"$REQUESTED_BYTES"'' $CONFIG_FILE
   echo "Please reboot for changes to take effect."
 else
   echo "The swap configuration file does not exist."
