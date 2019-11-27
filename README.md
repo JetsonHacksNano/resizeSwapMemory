@@ -50,6 +50,9 @@ This will modify the /etc/systemd/nvzramconfig.sh to set the requested memory fo
 You will need to reboot for the change to take effect.
 
 <h3>Notes</h3>
+
+You will need to have the amount of memory that you specify for the swap memory available on disk. The recommended swap memory size is 2GB for a 4GB Jetson Nano. Larger swap memory sizes can sometimes cause decreased performance. You may want to switch swap memory size for specific tasks (such as compiling a very large program) and then revert to the default size of 2GB afterwards.
+
 <b>November 2019</b>
 
 Initial Release
