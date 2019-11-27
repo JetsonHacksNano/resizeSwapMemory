@@ -21,10 +21,10 @@ fi
 MEGABYTES=""
 while [ "$1" != "" ]; do
     case $1 in
-        -g  )      
+        -g | -G )      
 				MEGABYTES=1000
                                 ;;
-        -m )       
+        -m | -M )       
                                 MEGABYTES=1
                                 ;;
 
