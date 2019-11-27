@@ -5,11 +5,11 @@ Resize the Zram swapfile on the Jetson Nano
 
 Starting with L4T 32.2.1/JetPack 4.2.2, the Jetson Nano by default has a 2GB swapfile. The swapfile allows for "extra memory" when there is memory pressure on main (physical) memory by swapping portions of memory to disk. Because the Jetson Nano has a relatively small amount of memory (4GB) this can be very useful, especially when say compiling large projects.
 
-You can examine the zram swapfile information:
+The swapfile method in use is Zram. You can examine the swapfile information:
 <blockquote>
 $ zramctl</blockquote>
 
-You will notice that there are four entries (one for each CPU of the Jetson Nano) /dev/zram0 - /dev/zram3. Each entry has an allocated amount of swap file associated with it, typically 494.6M, for a total of around 2GB. This is half the size of the main memory. You will find this to be adequate for most tasks.
+You will notice that there are four entries (one for each CPU of the Jetson Nano) /dev/zram0 - /dev/zram3. Each entry has an allocated amount of swap file memory associated with it, by default 494.6M, for a total of around 2GB. This is half the size of the main memory. You will find this to be adequate for most tasks.
 
 However, there are times ...
 
@@ -17,7 +17,10 @@ The configuration for the Zram allocation is done on startup. The file that cont
 
 The size of the Zram for each CPU is calculated by the line:
 <blockquote>
+mem=$((("${totalmem}" / 2 / "${NRDEVICES}") * 1024))
 </blockquote>
+
+where totalmem is the total amount of memory, and NRDEVICES is the number of CPUs.
 
 Basically it divides the amount of physical memory by the number of CPUS with a divisor, in this case 2 to get the 2GB total.
 Note that you can simply edit this equation using a text editor. You should probably make a backup first, just in case.
