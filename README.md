@@ -1,7 +1,7 @@
 # ResizeSwapfile
 Resize the size of swap memory on the Jetson Nano
 
-Starting with L4T 32.2.1/JetPack 4.2.2, the Jetson Nano by default has 2GB of swap memory. The swap meory allows for "extra memory" when there is memory pressure on main (physical) memory by swapping portions of memory to disk. Because the Jetson Nano has a relatively small amount of memory (4GB) this can be very useful, especially when say compiling large projects.
+Starting with L4T 32.2.1/JetPack 4.2.2, the Jetson Nano by default has 2GB of swap memory. The swap memory allows for "extra memory" when there is memory pressure on main (physical) memory by swapping portions of memory to disk. Because the Jetson Nano has a relatively small amount of memory (4GB) this can be very useful, especially when, say, compiling large projects.
 
 The swapfile method in use is Zram. You can examine the swap memory information:
 <blockquote>
@@ -31,9 +31,9 @@ For example, you may remove the divisor to get a full 4GB.
 You can also use the script in the repository.
 <blockquote>
 usage: ./setSwapFileSize [ [-g #gigabytes ] | [ -m #megabytes ] | [ -h ]<br>
-  -g #gigabytes - #gigabytes total to use for swap area<br>
-  -m #megabytes - #megabytes total to use for swap area<br>
-  -h            - help
+&nbsp;&nbsp;-g #gigabytes - #gigabytes total to use for swap area<br>
+&nbsp;&nbsp;-m #megabytes - #megabytes total to use for swap area<br>
+&nbsp;&nbsp;-h            - help
 <br>  
 </blockquote>
 
