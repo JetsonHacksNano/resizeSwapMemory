@@ -30,7 +30,7 @@ For example, you may remove the divisor to get a full 4GB.
 
 You can also use the script in the repository.
 <blockquote>
-usage: ./setSwapFileSize [ [-g #gigabytes ] | [ -m #megabytes ] | [ -h ]<br>
+usage: ./setSwapMemorySize [ [-g #gigabytes ] | [ -m #megabytes ] | [ -h ]<br>
 &nbsp;&nbsp;-g #gigabytes - #gigabytes total to use for swap area<br>
 &nbsp;&nbsp;-m #megabytes - #megabytes total to use for swap area<br>
 &nbsp;&nbsp;-h            - help
@@ -40,10 +40,10 @@ usage: ./setSwapFileSize [ [-g #gigabytes ] | [ -m #megabytes ] | [ -h ]<br>
 Example usage:<br>
 <blockquote>
 <br>  
-$ ./setSwapFileSize -g 4<br>
+$ ./setSwapMemorySize -g 4<br>
 <br></blockquote>
 
-will set the entire swapfile size to 4GB.
+will set the entire swap memory size to 4GB.
 
 This will modify the /etc/systemd/nvzramconfig.sh to set the requested memory for the swap file as specified.
 
