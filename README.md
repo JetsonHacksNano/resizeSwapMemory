@@ -5,13 +5,13 @@ Note that in addition to zram swap memory, you may want to also have a swapfile.
 
 Starting with L4T 32.2.1/JetPack 4.2.2, the Jetson Nano by default has 2GB of swap memory. The swap memory allows for "extra memory" when there is memory pressure on main (physical) memory by swapping portions of memory to disk. Because the Jetson Nano has a relatively small amount of memory (4GB) this can be very useful, especially when, say, compiling large projects.
 
-The swapfile method in use is Zram. You can examine the swap memory information:
+The swap memory method in use is Zram. You can examine the swap memory information:
 <blockquote>
 $ zramctl</blockquote>
 
 You will notice that there are four entries (one for each CPU of the Jetson Nano) /dev/zram0 - /dev/zram3. Each entry has an allocated amount of swap memory associated with it, by default 494.6M, for a total of around 2GB. This is half the size of the main memory. You will find this to be adequate for most tasks.
 
-However, there are times ...
+However, there are times you may want to adjust the size of swap memory ...
 
 The configuration for the Zram allocation is done on startup. The file that controls this is /etc/systemd/nvzramconfig.sh
 
@@ -53,7 +53,7 @@ You will need to reboot for the change to take effect.
 
 <h3>Notes</h3>
 
-You will need to have the amount of memory that you specify for the swap memory available on disk. The recommended swap memory size is 2GB for a 4GB Jetson Nano. Larger swap memory sizes can sometimes cause decreased performance. You may want to switch swap memory size for specific tasks (such as compiling a very large program) and then revert to the default size of 2GB afterwards.
+The recommended swap memory size is 2GB for a 4GB Jetson Nano. Larger swap memory sizes can sometimes cause decreased performance. It is recommended to use a swap file in addition to swap memory if you need larger amounts of memory for building projects.
 
 <b>November 2019</b>
 
@@ -62,7 +62,7 @@ Initial Release
 * v1.0
 * Jetson Nano
 * L4T 32.2.1/JetPack 4.2.2
-* L4T 32.2.3/JetPack 4.3
+* L4T 32.2.3/JetPack 4.2.2
 
 
 
